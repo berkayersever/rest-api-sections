@@ -8,3 +8,5 @@ single_quotes = 'Strings can also have single quotes'
 
 print(my_variable)
 print(string_variable)
+print("Hello World!")
+print(123)
