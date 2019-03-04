@@ -6,5 +6,14 @@ any_variable_name = 10
 string_variable = "Hello!"
 single_quotes = 'Strings can also have single quotes'
 
-print(my_variable)
-print(string_variable)
+# print(my_variable)
+# print(string_variable)
+
+
+# Alternative Print Function
+def my_print_method(string):
+    print(string)
+
+
+my_print_method(my_variable)
+my_print_method(string_variable)
