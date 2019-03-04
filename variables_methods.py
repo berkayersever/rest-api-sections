@@ -10,10 +10,17 @@ single_quotes = 'Strings can also have single quotes'
 # print(string_variable)
 
 
-# Alternative Print Function
+# Alternative Print Method
 def my_print_method(string):
     print(string)
 
 
-my_print_method(my_variable)
-my_print_method(string_variable)
+# Alternative Multiplication Method
+def my_multiply_method(number_one, number_two):
+    return number_one * number_two
+
+
+# my_print_method(my_variable)
+# my_print_method(string_variable)
+# result = my_multiply_method(5, 3)
+print(my_multiply_method(5, 3))
