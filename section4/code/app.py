@@ -16,7 +16,7 @@ class Item(Resource):
 
     def post(self, name):
         data = request.get_json()   # force=True or silent=True
-        item = {'name': name, 'price': 12.00}
+        item = {'name': name, 'price': data['price']}
         items.append(item)
         return item, 201
 
