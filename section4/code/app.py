@@ -12,3 +12,4 @@ class Student(Resource):
 
 api.add_resource(Student, '/student/<string:name>')     # http://127.0.0.1:5000/student/Berkay
 
+app.run(port=5000)
