@@ -32,6 +32,8 @@ class Item(Resource):
         items = list(filter(lambda x: x['name'] != name, items))
         return {'message': 'Item deleted'}
 
+    def put(self, name):
+
 
 class ItemList(Resource):
     def get(self):
