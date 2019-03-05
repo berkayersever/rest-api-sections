@@ -10,9 +10,6 @@ items = []
 class Item(Resource):
     def get(self, name):
         item = next(filter(lambda x: x['name'] == name, items), None)
-        # for item in items:
-        #     if item['name'] == name:
-        #         return item
         return {'item': item}, 200 if item else 404
 
     def post(self, name):
