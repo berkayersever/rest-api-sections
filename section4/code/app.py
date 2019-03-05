@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
-app.secret_key = 'fake'             # Secret Key
+app.secret_key = 'fake'     # Should be a Secret Key
 api = Api(app)
 
 items = []
