@@ -36,7 +36,6 @@ class Item(Resource):
         parser = reqparse.RequestParser()
         parser.add_argument('price', type=float, required=True,help="This field cannot be left blank!")
         data = parser.parse_args()
-        print(data['another'])
         item = next(filter(lambda x: x['name'] == name, items), None)
         if item is None:
             item = {'name': name, 'price': data['price']}
