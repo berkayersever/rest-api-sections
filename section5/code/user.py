@@ -42,5 +42,7 @@ class User:
 
 class UserRegister(Resource):
     def post(self):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
 
 
