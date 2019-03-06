@@ -1,5 +1,5 @@
 import sqlite3
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 
 
 class User:
@@ -41,6 +41,10 @@ class User:
         return user
 
 class UserRegister(Resource):
+
+    parser = reqparse.RequestParser()
+    parser.add_argument('username', type=str, required=True, help="This field cannot be left blank!")
+
     def post(self):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
@@ -52,4 +56,3 @@ class UserRegister(Resource):
         connection.close()
 
         return {"message": "User created successfully."}, 201
-    
