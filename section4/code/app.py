@@ -22,9 +22,9 @@ class Item(Resource):
         return {'item': item}, 200 if item else 404
 
     def post(self, name):
-        data = Item.parser.parse_args()
         if next(filter(lambda x: x['name'] == name, items), None):
             return {'message': "An item with name '{}' already exists.".format(name)}, 400
+        data = Item.parser.parse_args()
         item = {'name': name, 'price': data['price']}
         items.append(item)
         return item, 201
