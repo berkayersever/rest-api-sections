@@ -7,7 +7,7 @@ from user import UserRegister
 from item import Item, ItemList
 
 app = Flask(__name__)
-app.secret_key = 'fake'  # Should be a Secret Key
+app.secret_key = 'fake'                 # Should be a Secret Key
 api = Api(app)
 
 jwt = JWT(app, authenticate, identity)  # /auth
