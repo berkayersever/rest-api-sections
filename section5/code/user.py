@@ -3,6 +3,11 @@ import hashlib
 from flask_restful import Resource, reqparse
 
 
+def encrypt_string(hash_string):
+    sha_signature = hashlib.sha256(hash_string.encode()).hexdigest()
+    return sha_signature
+
+
 class User:
     def __init__(self, _id, username, password):
         self.id = _id
@@ -41,15 +46,11 @@ class User:
         connection.close()
         return user
 
-class UserRegister(Resource):
 
+class UserRegister(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str, required=True, help="This field cannot be left blank!")
     parser.add_argument('password', type=str, required=True, help="This field cannot be left blank!")
-
-    def encrypt_string(self, hash_string):
-        sha_signature = hashlib.sha256(hash_string.encode()).hexdigest()
-        return sha_signature
 
     def post(self):
         data = UserRegister.parser.parse_args()
@@ -58,7 +59,7 @@ class UserRegister(Resource):
         cursor = connection.cursor()
 
         query = "INSERT INTO users VALUES (NULL, ?, ?)"
-        cursor.execute(query, (data['username'], data['password']))
+        cursor.execute(query, (data['username'], encrypt_string(data['password'])))
 
         connection.commit()
         connection.close()
