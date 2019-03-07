@@ -21,6 +21,7 @@ class Item(Resource):
             return {'item': {'name': row[0], 'price': row[1]}}
         return {'message': 'Item not found'}, 404
 
+    @classmethod
     def find_by_name(cls, name):
 
     def post(self, name):
