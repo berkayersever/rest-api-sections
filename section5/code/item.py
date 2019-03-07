@@ -9,6 +9,8 @@ class Item(Resource):
 
     @jwt_required()
     def get(self, name):
+        item = self.find_by_name(name)
+
         return {'message': 'Item not found'}, 404
 
     @classmethod
