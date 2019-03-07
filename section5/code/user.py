@@ -1,4 +1,5 @@
 import sqlite3
+import hashlib
 from flask_restful import Resource, reqparse
 
 
