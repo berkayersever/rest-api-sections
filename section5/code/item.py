@@ -9,6 +9,10 @@ class Item(Resource):
 
     @jwt_required()
     def get(self, name):
+        return {'message': 'Item not found'}, 404
+
+    @classmethod
+    def find_by_name(cls, name):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
@@ -19,10 +23,7 @@ class Item(Resource):
 
         if row:
             return {'item': {'name': row[0], 'price': row[1]}}
-        return {'message': 'Item not found'}, 404
 
-    @classmethod
-    def find_by_name(cls, name):
 
     def post(self, name):
         if next(filter(lambda x: x['name'] == name, items), None):
