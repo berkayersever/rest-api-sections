@@ -24,7 +24,6 @@ class Item(Resource):
         if row:
             return {'item': {'name': row[0], 'price': row[1]}}
 
-
     def post(self, name):
         if next(filter(lambda x: x['name'] == name, items), None):
             return {'message': "An item with name '{}' already exists.".format(name)}, 400
