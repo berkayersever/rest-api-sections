@@ -34,7 +34,7 @@ class Item(Resource):
         item = {'name': name, 'price': data['price']}
         try:
             self.insert(item)
-        except:
+        except RuntimeError:
             return {"message": "An error occurred while inserting the item."}
         return item, 201
 
