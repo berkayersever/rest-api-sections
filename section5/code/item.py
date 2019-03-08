@@ -35,7 +35,7 @@ class Item(Resource):
         try:
             self.insert(item)
         except RuntimeError:
-            return {"message": "An error occurred while inserting the item."}
+            return {"message": "An error occurred while inserting the item."}, 500
         return item, 201
 
     @classmethod
