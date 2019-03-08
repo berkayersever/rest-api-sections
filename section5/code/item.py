@@ -37,7 +37,12 @@ class Item(Resource):
 
     @classmethod
     def insert(cls, item):
-
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "INSERT INTO items VALUES (?, ?)"
+        cursor.execute(query, (item['name'], item['price']))
+        connection.commit()
+        connection.close()
 
     def delete(self, name):
         connection = sqlite3.connect('data.db')
