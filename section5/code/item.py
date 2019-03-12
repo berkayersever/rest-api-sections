@@ -58,12 +58,12 @@ class Item(Resource):
 
     def put(self, name):
         data = Item.parser.parse_args()
-        item = next(filter(lambda x: x['name'] == name, items), None)
+        item = self.find_by_name(name)
+        updated_item = {'name': name, 'price': data['price']}
         if item is None:
-            item = {'name': name, 'price': data['price']}
-            items.append(item)
+            self.insert(updated_item)
         else:
-            item.update(data)
+            self.update(updated_item)
         return item
 
 
